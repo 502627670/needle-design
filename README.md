@@ -42,12 +42,12 @@ mf.build(MemberUser.class)
 .prop("nameMobile").hide().end()
 
  // 定义子表 
-.addChild(Cart.class).addCRUD()             
-     // 定义子表的外键，并在子表视图页面上显示父表的昵称
-    .fk("user").show("nickname").end()                                  
-    .fk("goods").show("name").end()
-    .fk("product").show("goodsName").end()
-     // 退出子表定义
+.addChild(Cart.class).addCRUD() <br/>            
+     // 定义子表的外键，并在子表视图页面上显示父表的昵称 <br/>
+    .fk("user").show("nickname").end() <br/>                                 
+    .fk("goods").show("name").end() <br/>
+    .fk("product").show("goodsName").end() <br/>
+     // 退出子表定义<br/>
     .endChild(); 
     
 // 定义菜单和路径
