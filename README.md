@@ -32,7 +32,7 @@ mf.build(MemberUser.class)
 // 字段值从数据库查出后要做Base64解码操作再在页面显示 <br/>
 .decoder(v -> Base64Utils.decode(v.toString())) <br/>
 // 退出字段定义  <br/>
-.end()
+.end() <br/>
 .prop("registerTime")
 // 定义字段类型为日期时间型 <br/>
 .dateTime()
