@@ -12,41 +12,41 @@ needle-design
 
 （2）如果要使用本项目的自动构建页面视图功能，那么只需要继承org.needleframe.AbstractContextService抽象类；重写defModules方法可以定义领域模型，系统根据定义的领域模型自动生成增、删、改、查页面视图；重写defMenus方法可以构建管理端的页面菜单，程序运行后自动显示页面菜单项，例如：
 
-// 定义会员模型
+// 定义会员模型 <br/>
 mf.build(MemberUser.class)
-// 定义搜索字段
+// 定义搜索字段 <br/>
 .filters("nickname").op(Op.RLIKE)
 
-// 定义列表视图要显示的列
+// 定义列表视图要显示的列 <br/>
 .showList("avatar", "nickname", "gender", "registerTime", "lastLoginTime")
 
-// 字段定义为图片字段，并且存储为绝对路径
+// 字段定义为图片字段，并且存储为绝对路径 <br/>
 .prop("avatar").absoluteImage().end()
 
-// 定义昵称字段
+// 定义昵称字段 <br/>
 .prop("nickname")
 
-// 字段值从页面传入后台要做Base64编码后再保存
+// 字段值从页面传入后台要做Base64编码后再保存 <br/>
 .encoder(v -> Base64Utils.encode(v.toString()))
 
-// 字段值从数据库查出后要做Base64解码操作再在页面显示
+// 字段值从数据库查出后要做Base64解码操作再在页面显示 <br/>
 .decoder(v -> Base64Utils.decode(v.toString()))
-// 退出字段定义
+// 退出字段定义 <br/>
 .end()
 .prop("registerTime")
-// 定义字段类型为日期时间型
+// 定义字段类型为日期时间型 <br/>
 .dateTime()
 .encoder(new DateEncoder("yyyy-MM-dd HH:mm:ss"))
 .decoder(new DateDecoder("yyyy-MM-dd HH:mm:ss")).end()
-// 字段隐藏不显示（查询、新增、修改和详情页面都隐藏）
+// 字段隐藏不显示（查询、新增、修改和详情页面都隐藏） <br/>
 .prop("nameMobile").hide().end()
 
  // 定义子表 
 .addChild(Cart.class).addCRUD() <br/>            
      // 定义子表的外键，并在子表视图页面上显示父表的昵称 <br/>
-    .fk("user").show("nickname").end() <br/>                                 
-    .fk("goods").show("name").end() <br/>
-    .fk("product").show("goodsName").end() <br/>
+    .fk("user").show("nickname").end()                                 
+    .fk("goods").show("name").end() 
+    .fk("product").show("goodsName").end()
      // 退出子表定义<br/>
     .endChild(); 
     
